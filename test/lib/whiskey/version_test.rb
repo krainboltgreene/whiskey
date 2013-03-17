@@ -1,4 +1,4 @@
-require 'helper'
+require "helper"
 
 class TestWhiskeyVersion < MiniTestCase
   def test_version

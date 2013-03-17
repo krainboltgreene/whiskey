@@ -1,4 +1,4 @@
-require 'helper'
+require "helper"
 
 class TestWhiskey < MiniTestCase
   def test_that_namespace_defined
