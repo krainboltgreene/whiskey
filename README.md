@@ -52,6 +52,11 @@ Install it using RubyGems:
 
     $ gem install whiskey
 
+Now you can create your first project with:
+
+``` bash
+$ whiskey build example_project
+```
 
 Contributing
 ============

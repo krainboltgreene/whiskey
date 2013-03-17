@@ -1,5 +1,5 @@
 require_relative 'whiskey/version'
 
-module Whiskey
+class Whiskey
   # Your code goes here...
 end

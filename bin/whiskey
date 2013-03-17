@@ -1,6 +1,6 @@
 #!/usr/bin/env ruby
 
 require "thor"
-require "whiskey/commands"
+require "whiskey/command"
 
 Whiskey::Command.start
