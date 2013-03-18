@@ -1,6 +1,12 @@
 Whiskey
 -------
 
+  - [![Gem Version](https://badge.fury.io/rb/example.png)](https://rubygems.org/gems/example)
+  - [![Code Quality](https://codeclimate.com/github/krainboltgreene/example.png)](https://codeclimate.com/github/krainboltgreene/example)
+  - [![Build Status](https://travis-ci.org/krainboltgreene/example.png)](https://travis-ci.org/krainboltgreene/example)
+  - [![Dependency Status](https://gemnasium.com/krainboltgreene/example.png)](https://gemnasium.com/krainboltgreene/example)
+  - [![Coverage Status](https://coveralls.io/repos/krainboltgreene/example/badge.png?branch=master)](https://coveralls.io/r/krainboltgreene/example)
+
 Whiskey is a [MUTE][MUTE] Engine.
 
 
