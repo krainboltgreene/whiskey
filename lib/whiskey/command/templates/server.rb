@@ -8,7 +8,7 @@ end
 $LOAD_PATH.unshift(__FILE__) unless $LOAD_PATH.include?(__FILE__)
 require "<%= name %>"
 
-module <%= name_as_constant %>
+module <%= name.constantize %>
   class Server < Whiskey::Server
 
   end

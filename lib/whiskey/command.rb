@@ -49,9 +49,5 @@ class Whiskey
       empty_directory("tmp")
       empty_directory("doc")
     end
-
-    def name_as_constant
-      name.constantize
-    end
   end
 end
