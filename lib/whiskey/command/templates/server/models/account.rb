@@ -1,5 +1,4 @@
-class Account
-  include ActiveRecord::Model
+class Account < ActiveRecord::Base
 
   has_many :characters
 

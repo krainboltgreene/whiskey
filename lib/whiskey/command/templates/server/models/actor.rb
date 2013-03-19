@@ -1,7 +1,6 @@
-class Place
-  include ActiveRecord::Model
+class Actor < ActiveRecord::Base
 
-  has_many :characters
+  belongs_to :account
 
   validate :name, present: true
   validate :description, present: true
