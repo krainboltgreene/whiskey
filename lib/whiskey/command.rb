@@ -3,7 +3,7 @@ require "whiskey"
 require "pry"
 
 
-class Whiskey
+module Whiskey
   class Command < Thor
     include Thor::Actions
 
