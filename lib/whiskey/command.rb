@@ -1,7 +1,5 @@
 require "thor"
 require "whiskey"
-require "pry"
-
 
 module Whiskey
   class Command < Thor
