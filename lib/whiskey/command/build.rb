@@ -45,10 +45,7 @@ module Whiskey
       end
 
       def setup_models
-        inside("models") do
-          template("account.rb")
-          template("place.rb")
-        end
+        directory("models")
       end
 
       def setup_static
