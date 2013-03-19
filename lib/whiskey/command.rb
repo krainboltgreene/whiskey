@@ -2,6 +2,7 @@ require "thor"
 require "whiskey"
 require "active_support/core_ext"
 require_relative "command/build"
+require_relative "command/start_server"
 
 module Whiskey
   class Command < Thor
@@ -18,6 +19,10 @@ module Whiskey
       Build.new(self, name).call
     end
 
+    desc "server [start|stop]", "Starts the whiskey server up"
+    def server(switch)
+      case switch
+      when "start" then StartServer.new.call
       end
     end
   end
