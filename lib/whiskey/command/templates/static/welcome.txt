@@ -1,1 +1,1 @@
-Welcome to a new MUTE!
+Welcome to <%= name.camelize %> a new MUTE!
