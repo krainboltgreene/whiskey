@@ -5,11 +5,12 @@ if defined?(Bundler)
   Bundler.require ENV["WHISKEY_ENV"].to_sym
 end
 
-$LOAD_PATH.unshift(__FILE__) unless $LOAD_PATH.include?(__FILE__)
+unless $LOAD_PATH.include?(File.expand_path("../server", __FILE__))
+  $:.unshift File.expand_path("../server", __FILE__)
+end
+
 require "<%= name %>"
 
-module <%= name.constantize %>
-  class Server < Whiskey::Server
-
-  end
+Whiskey::Server.new do |config|
+  # config.
 end
