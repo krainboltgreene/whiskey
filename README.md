@@ -1,11 +1,11 @@
 Whiskey
 -------
 
-  - [![Gem Version](https://badge.fury.io/rb/example.png)](https://rubygems.org/gems/example)
-  - [![Code Quality](https://codeclimate.com/github/krainboltgreene/example.png)](https://codeclimate.com/github/krainboltgreene/example)
-  - [![Build Status](https://travis-ci.org/krainboltgreene/example.png)](https://travis-ci.org/krainboltgreene/example)
-  - [![Dependency Status](https://gemnasium.com/krainboltgreene/example.png)](https://gemnasium.com/krainboltgreene/example)
-  - [![Coverage Status](https://coveralls.io/repos/krainboltgreene/example/badge.png?branch=master)](https://coveralls.io/r/krainboltgreene/example)
+  - [![Gem Version](https://badge.fury.io/rb/whiskey.png)](https://rubygems.org/gems/whiskey)
+  - [![Code Quality](https://codeclimate.com/github/krainboltgreene/whiskey.png)](https://codeclimate.com/github/krainboltgreene/whiskey)
+  - [![Build Status](https://travis-ci.org/krainboltgreene/whiskey.png)](https://travis-ci.org/krainboltgreene/whiskey)
+  - [![Dependency Status](https://gemnasium.com/krainboltgreene/whiskey.png)](https://gemnasium.com/krainboltgreene/whiskey)
+  - [![Coverage Status](https://coveralls.io/repos/krainboltgreene/whiskey/badge.png?branch=master)](https://coveralls.io/r/krainboltgreene/whiskey)
 
 Whiskey is a [MUTE][MUTE] Engine.
 
@@ -61,7 +61,7 @@ Install it using RubyGems:
 Now you can create your first project with:
 
 ``` bash
-$ whiskey build example_project
+$ whiskey build whiskey_project
 ```
 
 Contributing
