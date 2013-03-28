@@ -1,8 +1,8 @@
 require 'celluloid/io'
 require_relative "server/configuration"
-require_relative "server/connection"
 require_relative "server/handler"
-require_relative "server/receiver"
+require_relative "server/connection"
+require_relative "server/cycle"
 
 module Whiskey
   class Server
@@ -35,7 +35,17 @@ module Whiskey
     end
 
     def handle_connection(socket)
-      Handler.new(socket).handle
+      handler(connection(socket)).handle
+    end
+
+    private
+
+    def handler(connection)
+      Handler.new(connection)
+    end
+
+    def connection(socket)
+      Connection.new(socket)
     end
   end
 end

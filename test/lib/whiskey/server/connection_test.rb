@@ -32,5 +32,11 @@ class TestWhiskeyServerConnection < MiniTestCase
     @socket.expects(:peeraddr).at_least_once
     @connection.peeraddr
   end
+
+  def test_cycle
+    Whiskey::Server::Connection.any_instance.stubs(:cycle)
+    @connection.expects(:write).at_least_once
+    @connection.process
+  end
 end
 
