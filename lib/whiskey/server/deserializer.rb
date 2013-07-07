@@ -6,10 +6,21 @@ module Whiskey
 
       def initialize(raw)
         @raw = raw
+        @errors = []
       end
 
       def load
-        MultiJson.load(raw.chomp!)
+        begin
+          MultiJson.load(raw.chomp!)
+        rescue Exception => error
+          @errors << "Could not read JSON"
+        end
+      end
+
+      def errors
+        {
+          errors: @errors
+        }
       end
     end
   end
