@@ -1,10 +1,22 @@
 module Whiskey
   class Server
     class Receiver
-      attr_accessor :incoming
+      attr_reader :deserializer
 
-      def initialize(connection)
-        self.incoming = connection.readpartial(4096).chomp!
+      def initialize(input)
+        @deserializer = Deserializer.new(input)
+      end
+
+      def deserialize
+        if valid?
+          deserializer.load
+        else
+          errors
+        end
+      end
+
+      def valid?
+        deserializer.errors.empty?
       end
     end
   end
