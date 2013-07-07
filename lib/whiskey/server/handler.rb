@@ -1,10 +1,10 @@
 module Whiskey
   class Server
     class Handler
-      attr_accessor :connection
+      attr_reader :connection
 
-      def initialize(socket)
-        self.connection = Connection.new(socket)
+      def initialize(connection)
+        @connection = connection
       end
 
       def handle

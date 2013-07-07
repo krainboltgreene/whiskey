@@ -1,10 +1,11 @@
 module Whiskey
   class Server
     class Deserializer
-      attr_accessor :raw, :error
+      attr_reader :raw
+      attr_accessor :error
 
       def initialize(raw)
-        self.raw = raw
+        @raw = raw
       end
 
       def load

@@ -1,4 +1,4 @@
-require 'celluloid/io'
+require "celluloid/io"
 require_relative "server/configuration"
 require_relative "server/handler"
 require_relative "server/connection"
@@ -18,11 +18,11 @@ module Whiskey
       trap("INT") { supervisor.terminate; exit } and sleep
     end
 
-    attr_accessor :server
+    attr_reader :server
 
     def initialize(host, port)
       puts "Serving whiskey at #{host}:#{port}..."
-      self.server = TCPServer.new(host, port)
+      @server = TCPServer.new(host, port)
       async.run
     end
 

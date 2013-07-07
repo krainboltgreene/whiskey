@@ -1,15 +1,15 @@
 module Whiskey
   class Server
     class Cycle
-      attr_accessor :input
+      attr_reader :input
+      attr_reader :response
 
       def initialize(input)
-        binding.pry
-        self.input = deserialized(input)
+        @input = deserialized(input)
       end
 
       def interpret
-        self.response = Interpretor.new(input).response
+        @response = Interpretor.new(input).response
       end
 
       def output

@@ -5,10 +5,10 @@ module Whiskey
 
       def_delegators :socket, :write, :readpartial, :peeraddr
 
-      attr_accessor :socket
+      attr_reader :socket
 
       def initialize(socket)
-        self.socket = socket
+        @socket = socket
       end
 
       def id
