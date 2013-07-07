@@ -20,10 +20,5 @@
 /tmp
 
 # Ignores that should be in the global gitignore
-# /*.rbc
-# /.config
-/.yardoc
-/coverage/
-/doc/
-# /rdoc/
-# /spec/reports/
+/coverage
+/doc
