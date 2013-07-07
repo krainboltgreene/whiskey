@@ -8,12 +8,11 @@ module Whiskey
       end
 
       def handle
-        connection.connected
         loop do
-          Receiver.new(connection)
+          connection.process
         end
       rescue EOFError
-        connection.disconnected
+        # disconnect
       end
     end
   end
