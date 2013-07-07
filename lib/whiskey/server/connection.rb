@@ -15,7 +15,19 @@ module Whiskey
         "#{ip}:#{port}"
       end
 
+      def process
+        write cycle
+      end
+
       private
+
+      def cycle
+        Cycle.new(incoming).tap(&:interpret!).output
+      end
+
+      def incoming
+        readpartial(4096)
+      end
 
       def port
         peeraddr[1]
