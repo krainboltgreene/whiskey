@@ -35,17 +35,7 @@ module Whiskey
     end
 
     def handle_connection(socket)
-      handler(connection(socket)).handle
-    end
-
-    private
-
-    def handler(connection)
-      Handler.new(connection)
-    end
-
-    def connection(socket)
-      Connection.new(socket)
+      Handler.new(Connection.new(socket)).handle
     end
   end
 end
