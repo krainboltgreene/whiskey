@@ -1,10 +1,10 @@
 module Whiskey
   class Server
     class Interpretor
-      attr_accessor :input
+      attr_reader :input
 
       def initialize(input)
-        self.input = input
+        @input = input
       end
 
       def call

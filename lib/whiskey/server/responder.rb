@@ -1,10 +1,10 @@
 module Whiskey
   class Server
     class Responder
-      attr_accessor :serializer
+      attr_reader :serializer
 
       def initialize(output)
-        self.serializer = Serializer.new(output)
+        @serializer = Serializer.new(output)
       end
 
       def serialize
