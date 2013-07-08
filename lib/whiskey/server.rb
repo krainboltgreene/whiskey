@@ -8,9 +8,21 @@ module Whiskey
   class Server
     include Celluloid::IO
 
-    def self.configure(configuration = Configuration.new)
-      yield configuration
-      start(configuration)
+    # This method is the start point for the server, allowing the user
+    # to pass in settings for the server. It can be done like this:
+    #
+    #     Whiskey::Server.configure(host: "localhost", port: 4222)
+    #
+    # or with a block:
+    #
+    #     Whiskey::Server.configure do |config|
+    #       config.host = "localhost"
+    #       config.port = 4222
+    #     end
+    def self.configure(options = {}, &block)
+      @@configuration = Configuration.new(options)
+      instance_exec(block, @@configuration) if block_given?
+      start
     end
 
     def self.start(configuration)
