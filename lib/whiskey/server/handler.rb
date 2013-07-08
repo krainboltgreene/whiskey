@@ -11,8 +11,6 @@ module Whiskey
         loop do
           connection.process
         end
-      rescue EOFError
-        # disconnect
       end
     end
   end
