@@ -13,11 +13,22 @@ module Whiskey
       end
 
       def output
-        response.serialize
+        serialized(response)
       end
 
+      private
+
       def deserialized(input)
-        Receiver.new(input).deserialize
+        receiver = Receiver.new(input)
+        if receiver.valid?
+          receiver.deserialize
+        else
+          @response = Error.new(:bad_request).to_hash
+        end
+      end
+
+      def serialized(response)
+        Responder.new(response).serialize
       end
     end
   end
