@@ -1,6 +1,4 @@
-source 'https://rubygems.org'
+source "https://rubygems.org"
 
-ruby "2.0.0"
-
-# Specify your gem's dependencies in whiskey.gemspec
+# Specify your gemwhiskeys dependencies in whiskey.gemspec
 gemspec
