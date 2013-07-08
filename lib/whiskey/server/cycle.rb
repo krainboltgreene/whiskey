@@ -8,8 +8,8 @@ module Whiskey
         @input = deserialized(input)
       end
 
-      def interpret
-        @response = Interpretor.new(input).response
+      def interpret!
+        @response ||= Interpretor.new(input).response
       end
 
       def output
