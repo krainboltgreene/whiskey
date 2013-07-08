@@ -8,6 +8,7 @@ require_relative "server/deserializer"
 require_relative "server/interpretor"
 require_relative "server/responder"
 require_relative "server/serializer"
+require_relative "server/error"
 
 module Whiskey
   class Server
