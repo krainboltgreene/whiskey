@@ -1,11 +1,11 @@
 module Whiskey
   class Command < Thor
     class Build
-      attr_accessor :command
+      attr_reader :command
 
       def initialize(command, name)
-        self.command = command
-        self.name = name
+        @command = command
+        @name = name
       end
 
       def call
