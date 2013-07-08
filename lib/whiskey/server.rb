@@ -33,7 +33,8 @@ module Whiskey
 
     def self.start
       supervise(@@configuration.host, @@configuration.port)
-      trap("INT") { supervisor.terminate; exit } and sleep
+      trap("INT") { supervisor.terminate; exit }
+      sleep
     end
 
     attr_reader :server
