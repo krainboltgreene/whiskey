@@ -5,7 +5,7 @@ module Whiskey
       end
 
       def call
-        require File.expand_path("./server")
+        Whiskey::Server.configure(host: @host, port: @port)
       end
     end
   end
