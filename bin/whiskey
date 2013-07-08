@@ -3,4 +3,15 @@
 require "thor"
 require "whiskey/command"
 
+@traces = Hash.new([])
+
+catcher = TracePoint.new(:call) do |point|
+  if point.defined_class.to_s.include?("Whiskey")
+    trace = { path: point.path, line: point.lineno, method: point.method_id, type: point.event, class: point.defined_class }
+    puts "#{trace[:class]}##{trace[:method]} #{trace[:path].gsub(/^.+whiskey/, "whiskey")}:#{trace[:line]}"
+    @traces[point.defined_class] = @traces[point.defined_class] << trace
+  end
+end
+
+catcher.enable
 Whiskey::Command.start
