@@ -30,7 +30,7 @@ module Whiskey
       loop { async.handle_connection server.accept }
     end
 
-    def finalize
+    def finalizer(callback)
       server.close if server
     end
 
