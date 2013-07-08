@@ -1,5 +1,11 @@
 require "spec_helper"
 
 describe Whiskey::Server::Serialzer do
-  pending
+  describe "#initialize(raw)" do
+    pending
+  end
+
+  describe "#valid?" do
+    pending
+  end
 end

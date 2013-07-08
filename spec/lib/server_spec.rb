@@ -21,6 +21,10 @@ describe Whiskey::Server do
     pending
   end
 
+  describe "#finalizer" do
+    pending
+  end
+
   describe "#handle_connection" do
     pending
   end
