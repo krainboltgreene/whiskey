@@ -56,9 +56,8 @@ module Whiskey
     def handle_connection(socket)
       begin
         Handler.new(Connection.new(socket)).handle
-      rescue EOFError
+      rescue
         socket.close
-      rescue => e
       end
     end
   end
