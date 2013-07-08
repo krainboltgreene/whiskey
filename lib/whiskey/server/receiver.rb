@@ -8,15 +8,11 @@ module Whiskey
       end
 
       def deserialize
-        if valid?
-          deserializer.load
-        else
-          errors
-        end
+        deserializer.data
       end
 
       def valid?
-        deserializer.errors.empty?
+        deserializer.valid?
       end
     end
   end

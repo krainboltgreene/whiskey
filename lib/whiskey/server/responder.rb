@@ -8,7 +8,11 @@ module Whiskey
       end
 
       def serialize
-        serializer.dump
+        serializer.data
+      end
+
+      def valid?
+        serializer.valid?
       end
     end
   end

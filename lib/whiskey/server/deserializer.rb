@@ -1,26 +1,19 @@
 module Whiskey
   class Server
     class Deserializer
-      attr_reader :raw
-      attr_accessor :error
+      attr_reader :data
 
       def initialize(raw)
-        @raw = raw
-        @errors = []
-      end
-
-      def load
         begin
-          MultiJson.load(raw.chomp!)
+          @data = MultiJson.load(raw.chomp!)
+          @valid = true
         rescue Exception => error
-          @errors << "Could not read JSON"
+          @valid = false
         end
       end
 
-      def errors
-        {
-          errors: @errors
-        }
+      def valid?
+        @valid
       end
     end
   end
