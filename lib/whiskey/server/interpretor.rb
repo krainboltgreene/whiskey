@@ -8,7 +8,9 @@ module Whiskey
       end
 
       def call
-        true
+        case input.resource.to_s
+          when "world" then World.new
+        end
       end
 
       def response
