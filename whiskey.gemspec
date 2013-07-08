@@ -24,6 +24,7 @@ Gem::Specification.new do |spec|
   spec.add_runtime_dependency "celluloid-io", "~> 0.12"
   spec.add_runtime_dependency "multi_json", "~> 1.7"
   spec.add_runtime_dependency "colored", "~> 1.2"
+  spec.add_runtime_dependency "astruct", "~> 2.11"
   spec.add_development_dependency "bundler"
   spec.add_development_dependency "coveralls"
   spec.add_development_dependency "guard"
