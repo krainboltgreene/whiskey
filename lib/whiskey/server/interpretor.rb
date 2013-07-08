@@ -14,7 +14,7 @@ module Whiskey
       end
 
       def response
-        call and input.merge(status: 200)
+        call
       end
     end
   end
