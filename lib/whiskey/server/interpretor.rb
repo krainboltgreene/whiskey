@@ -11,13 +11,8 @@ module Whiskey
         true
       end
 
-      def result
-        call unless invalid?
-        return input
-      end
-
-      def invalid?
-        input.has_key?("error")
+      def response
+        call and input.merge(status: 200)
       end
     end
   end
