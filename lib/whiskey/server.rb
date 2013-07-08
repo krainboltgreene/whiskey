@@ -25,8 +25,8 @@ module Whiskey
       start
     end
 
-    def self.start(configuration)
-      supervise(configuration.host, configuration.port)
+    def self.start
+      supervise(@@configuration.host, @@configuration.port)
       trap("INT") { supervisor.terminate; exit } and sleep
     end
 
