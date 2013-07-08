@@ -1,7 +1,6 @@
 module Whiskey
   class Server
-    class Configuration
-      attr_accessor :host, :port
+    class Configuration < AltStruct
     end
   end
 end
