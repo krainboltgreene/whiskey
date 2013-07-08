@@ -4,7 +4,7 @@ module Whiskey
       attr_reader :input
 
       def initialize(input)
-        @input = input
+        @input = AltStruct.new(input)
       end
 
       def call
