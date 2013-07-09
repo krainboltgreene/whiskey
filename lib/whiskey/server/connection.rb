@@ -3,8 +3,6 @@ module Whiskey
     class Connection
       extend Forwardable
 
-      def_delegators :socket, :write, :readpartial, :peeraddr
-
       attr_reader :socket
 
       def initialize(socket)
@@ -35,6 +33,18 @@ module Whiskey
 
       def ip
         peeraddr[3]
+      end
+
+      def write(*args)
+        socket.write(*args)
+      end
+
+      def readpartial(*args)
+        socket.readpartial(*args)
+      end
+
+      def peeraddr(*args)
+        socket.peeraddr(*args)
       end
     end
   end
