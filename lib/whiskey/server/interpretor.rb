@@ -23,9 +23,7 @@ module Whiskey
       private
 
       def command
-        case instructions.scope.to_s
-          when "world" then ::Command::World
-        end.new(instructions.command.to_s)
+        scope.new(instructions.command.to_s)
       end
 
       def has_scope?
