@@ -40,7 +40,6 @@ module Whiskey
     attr_reader :server
 
     def initialize(host, port)
-      puts "Serving whiskey at #{host}:#{port}..."
       @server = TCPServer.new(host, port)
       async.run
     end
