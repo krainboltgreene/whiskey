@@ -5,7 +5,7 @@ module Whiskey
 
       def initialize(input)
         @instructions = input
-        @repsonse = if has_scope? then call else not_found end
+        @response = if has_scope? then call else not_found end
       end
 
       def call
