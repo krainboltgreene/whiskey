@@ -5,3 +5,5 @@ end
 
 require "rspec"
 require "whiskey"
+require "whiskey/server"
+require "whiskey/command"
