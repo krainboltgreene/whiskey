@@ -1,5 +1,5 @@
 module Command
-  class World
+  class WorldCommand
     include Command
 
     def initialize(command)
