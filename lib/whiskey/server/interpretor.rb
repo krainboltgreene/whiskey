@@ -26,6 +26,10 @@ module Whiskey
         scope.new(instructions.command.to_s)
       end
 
+      def scope
+        "::Command::#{instructions.scope}Command".camelcase.constantize
+      end
+
       def has_scope?
         @instructions.has_key?("scope")
       end
