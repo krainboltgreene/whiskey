@@ -55,7 +55,10 @@ module Whiskey
     def handle_connection(socket)
       begin
         Handler.new(Connection.new(socket)).handle
-      rescue
+      rescue => error
+        puts error
+      ensure
+        socket.write Serializer.new(Error.new(:internal_server_error).to_hash).data
         socket.close
       end
     end
