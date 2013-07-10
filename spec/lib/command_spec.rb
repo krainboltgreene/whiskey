@@ -1,5 +1,5 @@
 require "spec_helper"
 
-describe  do
+describe Whiskey::Command do
   pending
 end

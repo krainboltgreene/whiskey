@@ -1,6 +1,6 @@
 require "spec_helper"
 
-describe Whiskey::Server::Serialzer do
+describe Whiskey::Server::Serializer do
   describe "#initialize(raw)" do
     pending
   end

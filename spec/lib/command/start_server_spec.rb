@@ -1,5 +1,5 @@
 require "spec_helper"
 
-describe Whiskey::Server::StartServer do
+describe Whiskey::Command::StartServer do
   pending
 end
