@@ -1,41 +1,31 @@
 module Whiskey
   class Server
     class Interpretor
-      attr_reader :response
-
       def initialize(input)
-        @instructions = input
-        @response = if has_scope? then call else not_found end
-      end
-
-      def call
-        if command.valid?
-          @response = { status: 200 }
+        @instruction = input
+        @response = if has_control? && has_verb?
+          Router.new(instruction.control, instruction.verb, instruction.parameters)
         else
-          @response = Error.new(:unprocessable_entity).to_hash
+          Error.new(:not_found)
         end
       end
 
-      def instructions
-        AltStruct.new(@instructions)
+      def response
+        @response.to_hash
+      end
+
+      def instruction
+        AltStruct.new({ "parameters" => nil }.merge(@instruction))
       end
 
       private
 
-      def command
-        scope.new(instructions.command.to_s)
+      def has_control?
+        @instruction.has_key?("control")
       end
 
-      def scope
-        "::Command::#{instructions.scope}Command".camelcase.constantize
-      end
-
-      def has_scope?
-        @instructions.has_key?("scope")
-      end
-
-      def not_found
-        Error.new(:not_found).to_hash
+      def has_verb?
+        @instruction.has_key?("verb")
       end
     end
   end
