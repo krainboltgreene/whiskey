@@ -59,7 +59,11 @@ module Whiskey
       rescue => error
         puts error
       ensure
-        socket.write Serializer.new(Error.new(:internal_server_error).to_hash).data
+        # If the connection has been broken, this might not work: Errno::EPIPE
+        begin
+          socket.write Serializer.new(Error.new(:internal_server_error).to_hash).data
+        rescue
+        end
         socket.close
       end
     end
