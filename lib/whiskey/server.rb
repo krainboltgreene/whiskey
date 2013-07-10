@@ -9,7 +9,7 @@ require_relative "server/interpretor"
 require_relative "server/responder"
 require_relative "server/serializer"
 require_relative "server/error"
-require_relative "server/command"
+require_relative "server/control"
 
 module Whiskey
   class Server

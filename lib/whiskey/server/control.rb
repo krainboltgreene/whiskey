@@ -1,6 +1,6 @@
 module Whiskey
   class Server
-    module Command
+    module Control
       def initialize(*args)
         raise "Not yet implemented"
       end
