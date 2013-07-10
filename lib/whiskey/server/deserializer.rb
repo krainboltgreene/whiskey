@@ -8,6 +8,7 @@ module Whiskey
           @data = MultiJson.load(raw.chomp!)
           @valid = true
         rescue Exception => error
+          puts error
           @valid = false
         end
       end

@@ -56,13 +56,14 @@ module Whiskey
     def handle_connection(socket)
       begin
         Handler.new(Connection.new(socket)).handle
-      rescue => error
-        puts error
+      rescue => connection_error
+        puts connection_error
       ensure
         # If the connection has been broken, this might not work: Errno::EPIPE
         begin
           socket.write Serializer.new(Error.new(:internal_server_error).to_hash).data
-        rescue
+        rescue => socket_error
+          puts socket_error
         end
         socket.close
       end
