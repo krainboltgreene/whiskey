@@ -32,6 +32,8 @@ module Whiskey
       start
     end
 
+    # This method starts the server according to the configuration object
+    # and then follows the instructions set by Celluloid-Io examples.
     def self.start
       supervise(@@configuration.host, @@configuration.port)
       trap("INT") { supervisor.terminate; exit }
