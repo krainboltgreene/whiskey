@@ -12,6 +12,7 @@ module Whiskey
 
       def initialize(command, name)
         @command = command
+        @command.name = name
         @name = name
       end
 
