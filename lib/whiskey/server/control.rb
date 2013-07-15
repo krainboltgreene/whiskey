@@ -1,12 +1,19 @@
 module Whiskey
   class Server
     module Control
-      def initialize(*args)
-        raise "Not yet implemented"
+
+      def to_resource
+        name.downcase.gsub("control")
       end
 
-      def call
-        raise "Not yet implemented"
+      def to_route
+        {
+          resource: to_resource,
+          actions: actions.map(&:to_route)
+        }
+      end
+
+      def actions
       end
     end
   end
