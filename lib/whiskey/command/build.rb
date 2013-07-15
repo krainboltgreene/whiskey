@@ -2,8 +2,11 @@ module Whiskey
   class Command < Thor
     class Build
       extend Forwardable
+
       attr_reader :command, :name
+
       def_delegator :@command, :empty_directory
+      def_delegator :@command, :directory
       def_delegator :@command, :template
       def_delegator :@command, :inside
 
