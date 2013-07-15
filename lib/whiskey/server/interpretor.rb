@@ -15,7 +15,7 @@ module Whiskey
       end
 
       def instruction
-        AltStruct.new({ "parameters" => nil }.merge(@instruction))
+        OpenStruct.new(@instruction)
       end
 
       private
