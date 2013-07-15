@@ -3,8 +3,8 @@ module Whiskey
     class Interpretor
       def initialize(input)
         @instruction = input
-        @response = if has_control? && has_verb?
-          Router.new(instruction.control, instruction.verb, instruction.parameters)
+        @response = if has_resource? && has_verb?
+          Router.new(instruction.resource, instruction.verb, instruction.parameters)
         else
           Error.new(:not_found)
         end
@@ -20,8 +20,8 @@ module Whiskey
 
       private
 
-      def has_control?
-        @instruction.has_key?("control")
+      def has_resource?
+        @instruction.has_key?("resource")
       end
 
       def has_verb?
