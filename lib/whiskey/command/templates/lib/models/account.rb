@@ -1,5 +1,4 @@
 class Account < ActiveRecord::Base
-
   has_many :characters
 
   validate :name, present: true

@@ -1,5 +1,4 @@
 class Actor < ActiveRecord::Base
-
   belongs_to :account
 
   validate :name, present: true
