@@ -1,7 +1,11 @@
 module Whiskey
   class Command < Thor
     class Build
-      attr_reader :command
+      extend Forwardable
+      attr_reader :command, :name
+      def_delegator :@command, :empty_directory
+      def_delegator :@command, :template
+      def_delegator :@command, :inside
 
       def initialize(command, name)
         @command = command
@@ -37,7 +41,7 @@ module Whiskey
       end
 
       def setup_server
-        inside("server") do
+        inside("lib") do
           template("example.rb", "#{name}.rb")
           template("models.rb")
           setup_models
@@ -60,10 +64,6 @@ module Whiskey
           empty_directory("migrations")
           template("seed.rb")
         end
-      end
-
-      def method_missing(method, *arguments, &block)
-        command.send(method, *arguments, &block)
       end
     end
   end
