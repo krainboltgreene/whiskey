@@ -20,7 +20,6 @@ module Whiskey
         create_root
         setup_root
         setup_server
-        setup_static
         setup_db
       end
 
@@ -54,12 +53,6 @@ module Whiskey
 
       def setup_models
         directory("models")
-      end
-
-      def setup_static
-        inside("static") do
-          template("welcome.txt")
-        end
       end
 
       def setup_db
