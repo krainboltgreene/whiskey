@@ -16,6 +16,7 @@ module Whiskey
           control_action.safe_constantize.new(parameters).to_hash
         else
           Error.new(:not_found).to_hash
+        end
       end
 
       def control
