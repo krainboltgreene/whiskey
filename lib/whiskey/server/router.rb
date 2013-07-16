@@ -5,6 +5,12 @@ module Whiskey
         @control = resource
         @action = verb.upcase
         @body = parameters
+
+        @route = if control.safe_constantize && control_action.safe_constantize
+          control_action.safe_constantize.new(body)
+        else
+          Error.new(:not_found)
+        end
       end
 
       def body
