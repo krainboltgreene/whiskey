@@ -2,6 +2,7 @@ require "bundler"
 
 if defined?(Bundler)
   ENV["WHISKEY_ENV"] ||= "development"
+  Bundler.require
   Bundler.require ENV["WHISKEY_ENV"].to_sym
 end
 
