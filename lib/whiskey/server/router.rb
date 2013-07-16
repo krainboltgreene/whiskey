@@ -1,13 +1,13 @@
 module Whiskey
   class Server
     class Router
-        @parameters = parameters
       def initialize(resource, verb, parameters = {})
         @control = resource
         @action = verb.upcase
+        @body = parameters
       end
 
-      def parameters
+      def body
         OpenStruct.new(@parameters)
       end
 
