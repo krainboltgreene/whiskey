@@ -29,7 +29,7 @@ module Whiskey
     #     end
     def self.configure(options = {}, &block)
       @@configuration = Configuration.new(options)
-      instance_exec(block, @@configuration) if block_given?
+      instance_exec(@@configuration, &block) if block_given?
       start
     end
 
