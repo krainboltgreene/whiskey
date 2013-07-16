@@ -1,6 +1,6 @@
 module Controls
   module WorldControl
-    include Controls
+    include Whiskey::Server::Control
 
   end
 end
