@@ -1,10 +1,10 @@
 module Whiskey
   class Server
     class Router
-      def initialize(control, verb, parameters = {})
         @parameters = parameters
+      def initialize(resource, verb, parameters = {})
+        @control = resource
         @action = verb.upcase
-        @control = control
       end
 
       def parameters
