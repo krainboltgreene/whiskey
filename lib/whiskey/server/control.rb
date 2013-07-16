@@ -1,19 +1,28 @@
 module Whiskey
   class Server
     module Control
-
-      def to_resource
-        name.downcase.gsub("control")
+      def self.included(base)
+        base.extend ClassMethods
       end
 
-      def to_route
-        {
-          resource: to_resource,
-          actions: actions.map(&:to_route)
-        }
-      end
+      module ClassMethods
+        def to_resource
+          name.demodulize.downcase.gsub(/control/, '')
+        end
 
-      def actions
+        def to_route
+          binding.pry
+          {
+            to_resource => actions.map(&:to_verb)
+          }
+        end
+
+
+        def actions
+          constants.select do |constant|
+            constant.to_s.end_with?("Action")
+          end.map(&method(:const_get))
+        end
       end
     end
   end
