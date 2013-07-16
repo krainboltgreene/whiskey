@@ -8,8 +8,8 @@ end
 
 require "whiskey/server"
 
-unless $LOAD_PATH.include?(File.expand_path("../server", __FILE__))
-  $:.unshift File.expand_path("../server", __FILE__)
+unless $LOAD_PATH.include?(File.expand_path("../lib", __FILE__))
+  $:.unshift File.expand_path("../lib", __FILE__)
 end
 
 require_relative "lib/<%= name %>"
