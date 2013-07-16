@@ -1,3 +1,4 @@
+require "whiskey"
 require "celluloid/io"
 require_relative "server/configuration"
 require_relative "server/handler"
