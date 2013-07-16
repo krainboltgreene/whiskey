@@ -47,12 +47,19 @@ module Whiskey
         inside("lib") do
           template("example.rb", "#{name}.rb")
           template("models.rb")
+          template("action.rb")
+          template("controls.rb")
           setup_models
+          setup_controls
         end
       end
 
       def setup_models
         directory("models")
+      end
+
+      def setup_controls
+        directory("controls")
       end
 
       def setup_db
