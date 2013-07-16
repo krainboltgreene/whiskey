@@ -17,6 +17,11 @@ module Whiskey
           }
         end
 
+        def controls
+          constants.select do |constant|
+            constant.to_s.end_with?("Control")
+          end.map(&method(:const_get))
+        end
 
         def actions
           constants.select do |constant|
