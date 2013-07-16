@@ -12,11 +12,7 @@ module Whiskey
       end
 
       def to_hash
-        if control.safe_constantize && action.safe_constantize
-          control_action.safe_constantize.new(parameters).to_hash
-        else
-          Error.new(:not_found).to_hash
-        end
+        @route.to_hash
       end
 
       def control
