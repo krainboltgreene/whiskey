@@ -1,8 +1,8 @@
 module Controls
   module RouteControl
-    include Controls
 
     class IndexAction < Action
+    include Whiskey::Server::Control
       include RouteControl
 
       def initialize
