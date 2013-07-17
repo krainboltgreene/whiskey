@@ -14,6 +14,7 @@ module Whiskey
       def_delegator :@command, :inside
       def_delegator :@command, :run
       def_delegator :@command, :ask
+      def_delegator :@command, :say
 
       def initialize(command, name)
         @command = command
