@@ -8,7 +8,7 @@ module Whiskey
   class Command < Thor
     include Thor::Actions
 
-    attr_accessor :name
+    attr_accessor :values
 
     def self.source_root
       File.join(File.dirname(__FILE__), "command", "templates")
@@ -16,6 +16,7 @@ module Whiskey
 
     desc "build NAME", "Builds a new whiskey project from the scaffold"
     def build(name)
+      @values = AltStruct.new
       Build.new(self, name).call
     end
 

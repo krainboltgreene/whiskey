@@ -12,7 +12,7 @@ unless $LOAD_PATH.include?(File.expand_path("../lib", __FILE__))
   $:.unshift File.expand_path("../lib", __FILE__)
 end
 
-require "<%= name %>"
+require "<%= values.name %>"
 
 Whiskey::Server.configure do |config|
   config.host = ENV["WHISKEY_HOST"] || "127.0.0.1"
