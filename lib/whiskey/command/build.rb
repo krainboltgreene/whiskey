@@ -26,6 +26,7 @@ module Whiskey
         @command.values.ruby = ask("Which Ruby do you want to use?", limit_to: RUBIES)
         template("ruby-version", ".ruby-version")
         tempalte("ruby-gemset", ".ruby-gemset")
+        run("bundle install")
       end
 
       private
