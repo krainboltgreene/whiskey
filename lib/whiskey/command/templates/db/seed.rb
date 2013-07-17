@@ -3,7 +3,7 @@
 introduction = Document.create do |doc|
   doc.title = "Introduction"
   doc.body = """
-    Welcome to <%= name.camelize %> a new MUTE!
+    Welcome to <%= values.name.camelize %> a new MUTE!
 
     To make an account here simply type:
 
