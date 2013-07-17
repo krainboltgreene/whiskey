@@ -27,8 +27,6 @@ module Whiskey
         setup_ruby
         inside(name) do
           run("git init")
-          run("rvm use .")
-          run("bundle install")
         end
       end
 
