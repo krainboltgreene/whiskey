@@ -22,6 +22,7 @@ module Whiskey
         setup_root
         setup_server
         setup_db
+        run("git init")
         @command.values.ruby = ask("Which Ruby do you want to use?", limit_to: RUBIES)
         template("ruby-version", ".ruby-version")
         tempalte("ruby-gemset", ".ruby-gemset")
