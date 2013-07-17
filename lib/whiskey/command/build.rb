@@ -24,11 +24,7 @@ module Whiskey
         setup_root
         setup_server
         setup_db
-        run("git init")
-        @command.values.ruby = ask("Which Ruby do you want to use?", limit_to: RUBIES)
-        template("ruby-version", ".ruby-version")
-        template("ruby-gemset", ".ruby-gemset")
-        run("bundle install")
+        setup_ruby
         inside(name) do
           run("git init")
           run("bundle install")
@@ -40,6 +36,12 @@ module Whiskey
       def create_root
         empty_directory(name)
         command.destination_root = name
+      end
+
+      def setup_ruby
+        @command.values.ruby = ask("Which Ruby do you want to use?", limit_to: RUBIES)
+        template("ruby-version", ".ruby-version")
+        template("ruby-gemset", ".ruby-gemset")
       end
 
       def setup_root
