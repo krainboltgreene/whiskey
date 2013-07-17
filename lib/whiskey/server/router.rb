@@ -7,6 +7,7 @@ module Whiskey
         @body = parameters
 
         @route = if control.safe_constantize && control_action.safe_constantize
+          Whiskey.logger.info("#{@action} /#{@control} #{@body.inspect}")
           control_action.safe_constantize.new(body)
         else
           Error.new(:not_found)

@@ -16,7 +16,7 @@ module Whiskey
       def process
         write cycle
       end
-
+      
       private
 
       def cycle

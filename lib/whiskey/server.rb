@@ -46,7 +46,9 @@ module Whiskey
     attr_reader :server
 
     def initialize(host, port)
+      Whiskey.logger.info "Initializing a server at #{@@configuration}..."
       @server = TCPServer.new(host, port)
+      Whiskey.logger.info "Successfully bound host and port!"
       async.run
     end
 
@@ -59,16 +61,18 @@ module Whiskey
     end
 
     def handle_connection(socket)
+      connection = Connection.new(socket)
+      Whiskey.logger.info "New connection created from #{connection.id}"
       begin
-        Handler.new(Connection.new(socket)).handle
+        Handler.new(connection).handle
       rescue => connection_error
-        puts connection_error
+        Whiskey.logger.error connection_error
       ensure
         # If the connection has been broken, this might not work: Errno::EPIPE
         begin
           socket.write Serializer.new(Error.new(:internal_server_error).to_hash).data
         rescue => socket_error
-          puts socket_error
+          Whiskey.logger.error socket_error
         end
         socket.close
       end

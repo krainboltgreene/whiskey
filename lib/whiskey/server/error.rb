@@ -2,18 +2,35 @@ module Whiskey
   class Server
     class Error
       def initialize(code)
-        @message = send(code)
+        @payload = send(code)
+        Whiskey.logger.error(to_s)
       end
 
       def to_hash
         {
-          status: @message[:status],
+          status: status,
           error: message
         }
       end
 
       def message
-        "#{@message[:title]} - #{@message[:body]}"
+        "#{title} - #{body}"
+      end
+
+      def status
+        @payload[:status]
+      end
+
+      def title
+        @payload[:title]
+      end
+
+      def body
+        @payload[:body]
+      end
+
+      def to_s
+        "#{status} #{message}"
       end
 
       private
