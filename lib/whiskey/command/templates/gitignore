@@ -4,10 +4,6 @@
 # or operating system, you probably want to add a global ignore instead:
 #   git config --global core.excludesfile ~/.gitignore
 
-# Ignore bundler config
-/.bundle
-/Gemfile.lock
-
 # Ignore all bundler caching
 /vendor/cache
 /vendor/ruby
@@ -16,10 +12,6 @@
 /tmp
 
 # Ignores that should be in the global gitignore
-# /*.rbc
-# /.config
-/.yardoc
 /coverage/
 /doc/
-# /rdoc/
-# /spec/reports/
+/log/
