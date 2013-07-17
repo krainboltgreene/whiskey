@@ -11,6 +11,8 @@ module Whiskey
       def_delegator :@command, :directory
       def_delegator :@command, :template
       def_delegator :@command, :inside
+      def_delegator :@command, :run
+      def_delegator :@command, :ask
 
       def initialize(command, name)
         @command = command
@@ -25,7 +27,7 @@ module Whiskey
         run("git init")
         @command.values.ruby = ask("Which Ruby do you want to use?", limit_to: RUBIES)
         template("ruby-version", ".ruby-version")
-        tempalte("ruby-gemset", ".ruby-gemset")
+        template("ruby-gemset", ".ruby-gemset")
         run("bundle install")
       end
 
