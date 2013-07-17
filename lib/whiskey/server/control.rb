@@ -11,7 +11,6 @@ module Whiskey
         end
 
         def to_route
-          binding.pry
           {
             to_resource => actions.map(&:to_verb)
           }
