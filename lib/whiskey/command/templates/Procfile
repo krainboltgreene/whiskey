@@ -1,1 +1,1 @@
-mute: bundle exec server.rb
+mute: bundle exec ruby server.rb
