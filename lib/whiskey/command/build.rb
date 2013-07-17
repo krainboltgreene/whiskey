@@ -29,6 +29,10 @@ module Whiskey
         template("ruby-version", ".ruby-version")
         template("ruby-gemset", ".ruby-gemset")
         run("bundle install")
+        inside(name) do
+          run("git init")
+          run("bundle install")
+        end
       end
 
       private
