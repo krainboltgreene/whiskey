@@ -29,6 +29,7 @@ module Whiskey
         inside(name) do
           run("git init")
         end
+        say("You should now run: bundle install")
       end
 
       private
