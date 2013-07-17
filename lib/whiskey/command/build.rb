@@ -4,7 +4,7 @@ module Whiskey
       extend Forwardable
 
       RUBIES = ["rbx", "jruby", "ruby-2.0.0"]
-      RUBY_ASK = "Which Ruby do you want to use?\n\n\t- ruby-2.0.0\n\t- rubinius\n\t- jruby\n"
+      RUBIES_ASK = "Which Ruby do you want to use?\n\n\t- ruby-2.0.0\n\t- rubinius\n\t- jruby\n"
 
       attr_reader :command, :name
 
