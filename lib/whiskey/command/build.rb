@@ -40,6 +40,7 @@ module Whiskey
         template("gitignore", ".gitignore")
         template("LICENSE.txt")
         template("Thorfile")
+        template("Procfile")
         template("server.rb")
         empty_directories("script", "log", "tmp", "doc")
       end
