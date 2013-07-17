@@ -4,6 +4,7 @@ module Whiskey
       extend Forwardable
 
       RUBIES = ["rbx", "jruby", "ruby-2.0.0"]
+      RUBY_ASK = "Which Ruby do you want to use?\n\n\t- ruby-2.0.0\n\t- rubinius\n\t- jruby\n"
 
       attr_reader :command, :name
 
@@ -38,7 +39,7 @@ module Whiskey
       end
 
       def setup_ruby
-        @command.values.ruby = ask("Which Ruby do you want to use?", limit_to: RUBIES)
+        @command.values.ruby = ask(RUBIES_ASK, limit_to: RUBIES)
         template("ruby-version", ".ruby-version")
         template("ruby-gemset", ".ruby-gemset")
       end
