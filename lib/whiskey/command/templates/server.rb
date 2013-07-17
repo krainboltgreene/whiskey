@@ -15,6 +15,6 @@ end
 require "<%= values.name %>"
 
 Whiskey::Server.configure do |config|
-  config.host = ENV["WHISKEY_HOST"] || "127.0.0.1"
-  config.port = ENV["WHISKEY_PORT"] || 9000
+  config.host = ENV["WHISKEY_HOST"] || ENV["HOST"] || "0.0.0.0"
+  config.port = ENV["WHISKEY_PORT"] || ENV["PORT"] || 9000
 end
