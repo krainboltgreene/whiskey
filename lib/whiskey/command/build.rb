@@ -3,6 +3,8 @@ module Whiskey
     class Build
       extend Forwardable
 
+      RUBIES = ["rbx", "jruby", "ruby-2.0.0"]
+
       attr_reader :command, :name
 
       def_delegator :@command, :empty_directory
@@ -21,6 +23,9 @@ module Whiskey
         setup_root
         setup_server
         setup_db
+        @command.values.ruby = ask("Which Ruby do you want to use?", limit_to: RUBIES)
+        template("ruby-version", ".ruby-version")
+        tempalte("ruby-gemset", ".ruby-gemset")
       end
 
       private
