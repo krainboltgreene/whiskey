@@ -1,1 +1,1 @@
-mute: bundle exec ruby server.rb
+mute: bundle exec whiskey server
