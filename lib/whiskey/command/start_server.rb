@@ -1,7 +1,6 @@
 module Whiskey
   class Command < Thor
     class StartServer
-        require "whiskey/server"
       def initialize(host = nil, port = nil, environment = "development")
         ENV["WHISKEY_HOST"] = host
         ENV["WHISKEY_PORT"] = port
@@ -9,7 +8,7 @@ module Whiskey
       end
 
       def call
-        Whiskey::Server.configure(host: @host, port: @port)
+        load File.join(Dir.pwd, "server")
       end
     end
   end
