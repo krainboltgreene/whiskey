@@ -5,6 +5,7 @@ module Whiskey
       def initialize(host = nil, port = nil, environment = "development")
         ENV["WHISKEY_HOST"] = host
         ENV["WHISKEY_PORT"] = port
+        ENV["WHISKEY_ENVIRONMENT"] = environment
       end
 
       def call
