@@ -2,9 +2,9 @@ module Whiskey
   class Command < Thor
     class StartServer
         require "whiskey/server"
-        @host = host
-        @port = port
       def initialize(host = nil, port = nil, environment = "development")
+        ENV["WHISKEY_HOST"] = host
+        ENV["WHISKEY_PORT"] = port
       end
 
       def call
