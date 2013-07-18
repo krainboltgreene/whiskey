@@ -27,9 +27,7 @@ module Whiskey
         setup_server
         setup_db
         setup_ruby
-        inside(name) do
-          run("git init")
-        end
+        run("git init")
         say("You should now run: bundle install")
       end
 
