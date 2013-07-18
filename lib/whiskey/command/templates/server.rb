@@ -1,9 +1,9 @@
 require "bundler"
 
 if defined?(Bundler)
-  ENV["WHISKEY_ENV"] ||= "development"
+  ENV["WHISKEY_ENVIRONMENT"] ||= "development"
   Bundler.require
-  Bundler.require ENV["WHISKEY_ENV"].to_sym
+  Bundler.require ENV["WHISKEY_ENVIRONMENT"].to_sym
 end
 
 require "whiskey/server"
