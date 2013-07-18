@@ -8,7 +8,7 @@ module Whiskey
       end
 
       def call
-        load File.join(Dir.pwd, "server")
+        load File.join(Dir.pwd, "server.rb")
       end
     end
   end
