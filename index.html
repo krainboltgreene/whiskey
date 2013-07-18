@@ -1,0 +1,113 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="chrome=1">
+    <title>Whiskey by krainboltgreene</title>
+    <link rel="stylesheet" href="stylesheets/styles.css">
+    <link rel="stylesheet" href="stylesheets/pygment_trac.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
+    <script src="javascripts/respond.js"></script>
+    <!--[if lt IE 9]>
+      <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+    <!--[if lt IE 8]>
+    <link rel="stylesheet" href="stylesheets/ie.css">
+    <![endif]-->
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+
+  </head>
+  <body>
+      <div id="header">
+        <nav>
+          <li class="fork"><a href="https://github.com/krainboltgreene/whiskey">View On GitHub</a></li>
+          <li class="downloads"><a href="https://github.com/krainboltgreene/whiskey/zipball/master">ZIP</a></li>
+          <li class="downloads"><a href="https://github.com/krainboltgreene/whiskey/tarball/master">TAR</a></li>
+          <li class="title">DOWNLOADS</li>
+        </nav>
+      </div><!-- end header -->
+
+    <div class="wrapper">
+
+      <section>
+        <div id="title">
+          <h1>Whiskey</h1>
+          <p>A specialized server for text based RPGs (MUTEs)</p>
+          <hr>
+          <span class="credits left">Project maintained by <a href="https://github.com/krainboltgreene">krainboltgreene</a></span>
+          <span class="credits right">Hosted on GitHub Pages &mdash; Theme by <a href="https://twitter.com/michigangraham">mattgraham</a></span>
+        </div>
+
+        <ul>
+<li><a href="https://rubygems.org/gems/whiskey"><img src="https://badge.fury.io/rb/whiskey.png" alt="Gem Version"></a></li>
+<li><a href="https://codeclimate.com/github/krainboltgreene/whiskey"><img src="https://codeclimate.com/github/krainboltgreene/whiskey.png" alt="Code Quality"></a></li>
+<li><a href="https://travis-ci.org/krainboltgreene/whiskey"><img src="https://travis-ci.org/krainboltgreene/whiskey.png" alt="Build Status"></a></li>
+<li><a href="https://gemnasium.com/krainboltgreene/whiskey"><img src="https://gemnasium.com/krainboltgreene/whiskey.png" alt="Dependency Status"></a></li>
+<li><a href="https://coveralls.io/r/krainboltgreene/whiskey"><img src="https://coveralls.io/repos/krainboltgreene/whiskey/badge.png?branch=master" alt="Coverage Status"></a></li>
+</ul><p>Whiskey is a [MUTE][MUTE] Engine.</p>
+
+<h1>
+<a name="using-whiskey" class="anchor" href="#using-whiskey"><span class="octicon octicon-link"></span></a>Using Whiskey</h1>
+
+<p>Once you've installed Whiskey you can start your new server with:</p>
+
+<div class="highlight"><pre><span class="nv">$ </span>whiskey server start
+</pre></div>
+
+<p>If you want to start whiskey on a specific port you'll need to specify like this:</p>
+
+<div class="highlight"><pre><span class="nv">$ </span>whiskey server start <span class="o">[</span>-p|--port<span class="o">]</span> 4001
+</pre></div>
+
+<p>The server defaults to running in development mode, but you can can also specify:</p>
+
+<div class="highlight"><pre><span class="nv">$ </span>whiskey server start <span class="o">[</span>-e|--environment<span class="o">]</span> production
+</pre></div>
+
+<p>If you want Whiskey to run in the background specify with:</p>
+
+<div class="highlight"><pre><span class="nv">$ </span>whiskey server start <span class="o">[</span>-b|--background<span class="o">]</span>
+</pre></div>
+
+<p>Any changes you make to the code will require reloading the server so to kill
+the running server:</p>
+
+<div class="highlight"><pre><span class="nv">$ </span>whiskey <span class="nb">kill </span>all
+</pre></div>
+
+<h1>
+<a name="installing-whiskey" class="anchor" href="#installing-whiskey"><span class="octicon octicon-link"></span></a>Installing Whiskey</h1>
+
+<p><strong>Requirements</strong>:</p>
+
+<ol>
+<li>JVM 1.7+ (See <a href="JVMINSTALL">guide</a>)</li>
+<li>JRuby 1.7+ (See <a href="JRUBYINSTALL">guide</a>)</li>
+<li>Some Database (See <a href="DBINSTALL">guide</a>)</li>
+</ol><p>Install it using RubyGems:</p>
+
+<pre><code>$ gem install whiskey
+</code></pre>
+
+<p>Now you can create your first project with:</p>
+
+<div class="highlight"><pre><span class="nv">$ </span>whiskey build whiskey_project
+</pre></div>
+
+<h1>
+<a name="contributing" class="anchor" href="#contributing"><span class="octicon octicon-link"></span></a>Contributing</h1>
+
+<ol>
+<li>Fork it</li>
+<li>Create your feature branch (<code>git checkout -b my-new-feature</code>)</li>
+<li>Commit your changes (<code>git commit -am 'Add some feature'</code>)</li>
+<li>Push to the branch (<code>git push origin my-new-feature</code>)</li>
+<li>Create new Pull Request</li>
+</ol>
+      </section>
+
+    </div>
+    <!--[if !IE]><script>fixScale(document);</script><![endif]-->
+    
+  </body>
+</html>
