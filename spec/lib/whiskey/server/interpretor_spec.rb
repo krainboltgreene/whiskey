@@ -18,10 +18,10 @@ describe Whiskey::Server::Interpretor do
   end
 
   describe "#response" do
+    let(:response) { interpretor.response }
+
     it "returns a router" do
-      allow(interpretor).to receive(:route) { route }
-      expect(interpretor).to receive(:route)
-      interpretor.response
+      expect(response).to be_a(Whiskey::Server::Route)
     end
 
     context "with a bad instruction" do
@@ -31,14 +31,12 @@ describe Whiskey::Server::Interpretor do
 
       it "returns an error if not given a resource" do
         allow(interpretor).to receive(:has_resource?).and_return(false)
-        expect(interpretor).to receive(:resource_not_found)
-        interpretor.response
+        expect(response).to be_a(Whiskey::Server::Error)
       end
 
       it "returns an error if not given a verb" do
         allow(interpretor).to receive(:has_verb?).and_return(false)
-        expect(interpretor).to receive(:resource_not_found)
-        interpretor.response
+        expect(response).to be_a(Whiskey::Server::Error)
       end
     end
   end
