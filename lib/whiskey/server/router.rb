@@ -1,4 +1,3 @@
-require "pry"
 module Whiskey
   class Server
     class Router
@@ -6,12 +5,6 @@ module Whiskey
         @control = resource
         @action = verb.upcase
         @body = parameters
-        @route = if control.safe_constantize && control_action.safe_constantize
-          Whiskey.logger.info("#{@action} /#{@control} #{@body.inspect}")
-          control_action.safe_constantize.new(body)
-        else
-          Error.new(:not_found)
-        end
       end
 
       def body
@@ -19,7 +12,8 @@ module Whiskey
       end
 
       def to_hash
-        @route.to_hash
+        Whiskey.logger.info("#{@action} /#{@control} #{@body.inspect}")
+        control_action.constantize.new(body).to_hash
       end
 
       def control
@@ -35,10 +29,22 @@ module Whiskey
         end
       end
 
+      def valid_route?
+        defined_control? && defined_action?
+      end
+
       private
 
       def control_action
         "#{control}::#{action}"
+      end
+
+      def defined_control?
+        self.class.const_defined?(control)
+      end
+
+      def defined_action?
+        self.class.const_defined?(action)
       end
     end
   end

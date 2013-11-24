@@ -3,14 +3,15 @@ module Whiskey
     class Interpretor
       def initialize(input)
         @instruction = input
+        @router = Router.new(instruction.resource, instruction.verb, instruction.parameters)
       end
 
       def response
-        if has_resource? && has_verb?
-          route
+        if valid_input?
+          @router
         else
-          resource_not_found
-        end.to_hash
+          Error.new(:not_found)
+        end
       end
 
       def instruction
@@ -19,12 +20,8 @@ module Whiskey
 
       private
 
-      def route
-        Router.new(instruction.resource, instruction.verb, instruction.parameters)
-      end
-
-      def resource_not_found
-        Error.new(:not_found)
+      def valid_input?
+        has_resource? && has_verb? && @router.valid_route?
       end
 
       def has_resource?
