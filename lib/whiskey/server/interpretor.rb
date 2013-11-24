@@ -3,29 +3,36 @@ module Whiskey
     class Interpretor
       def initialize(input)
         @instruction = input
-        @response = if has_resource? && has_verb?
-          Router.new(instruction.resource, instruction.verb, instruction.parameters)
-        else
-          Error.new(:not_found)
-        end
       end
 
       def response
-        @response.to_hash
+        if has_resource? && has_verb?
+          route
+        else
+          resource_not_found
+        end.to_hash
       end
 
       def instruction
-        OpenStruct.new(@instruction)
+        AltStruct.new(@instruction)
       end
 
       private
 
+      def route
+        Router.new(instruction.resource, instruction.verb, instruction.parameters)
+      end
+
+      def resource_not_found
+        Error.new(:not_found)
+      end
+
       def has_resource?
-        @instruction.has_key?("resource")
+        instruction.respond_to?("resource")
       end
 
       def has_verb?
-        @instruction.has_key?("verb")
+        instruction.respond_to?("verb")
       end
     end
   end
