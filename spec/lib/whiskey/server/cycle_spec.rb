@@ -5,8 +5,15 @@ describe Whiskey::Server::Cycle do
 
   describe "#interpret!" do
     let(:interpret!) { cycle.interpret! }
+
+    before(:each) do
+      allow(cycle).to receive(:input) do
+        {}
+      end
+    end
+
     it "should return the response" do
-      expect(interpret!).to call(:response)
+      expect(interpret!).to be_a(Whiskey::Server::Interpretor)
     end
   end
 
