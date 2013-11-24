@@ -1,10 +1,13 @@
 require "spec_helper"
 
 describe Whiskey::Server::Configuration do
+  let(:host) { "foo" }
+  let(:port) { "bar" }
+  let(:delimiter) { ":" }
+  let(:configuration) { described_class.new(host: host, port: port) }
+
   describe "#to_s" do
-    let(:host) { "foo" }
-    let(:port) { "bar" }
-    let(:to_s) { described_class.new(host: host, port: port).to_s }
+    let(:to_s) { configuration.to_s }
 
     it "contains the host" do
       expect(to_s).to include(host)
@@ -14,8 +17,8 @@ describe Whiskey::Server::Configuration do
       expect(to_s).to include(port)
     end
 
-    it "delimites with a :" do
-      expect(to_s).to include("#{host}:#{port}")
+    it "delimits with a : character" do
+      expect(to_s).to include(delimiter)
     end
   end
 end

@@ -3,11 +3,14 @@ require "spec_helper"
 describe Whiskey::Server::Connection do
   let(:ip) { "127.0.0.1" }
   let(:port) { "4000" }
-  let(:socket) { double(Socket) }
+  let(:socket) { double("Socket") }
   let(:connection) { described_class.new(socket) }
+  let(:delimiter) { ":" }
 
-  before { allow(socket).to receive(:peeraddr) { [nil, port, nil, ip] } }
-  before { allow(socket).to receive(:readpartial) { "foo" } }
+  before do
+    allow(socket).to receive(:peeraddr) { [nil, port, nil, ip] }
+    allow(socket).to receive(:readpartial) { "foo" }
+  end
 
   describe "#id" do
     let(:id) { connection.id }
@@ -20,8 +23,8 @@ describe Whiskey::Server::Connection do
       expect(id).to include(port)
     end
 
-    it "contains the delimiter" do
-      expect(id).to include("#{ip}:#{port}")
+    it "delimits with the : character" do
+      expect(id).to include(delimiter)
     end
   end
 
