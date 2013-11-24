@@ -1,25 +1,54 @@
-blankgem
---------
+whiskey
+-------
 
-  - [![Quality](http://img.shields.io/codeclimate/github/krainboltgreene/blankgem.gem.svg?style=flat-square)](https://codeclimate.com/github/krainboltgreene/blankgem.gem)
-  - [![Coverage](http://img.shields.io/codeclimate/coverage/github/krainboltgreene/blankgem.gem.svg?style=flat-square)](https://codeclimate.com/github/krainboltgreene/blankgem.gem)
-  - [![Build](http://img.shields.io/travis-ci/krainboltgreene/blankgem.gem.svg?style=flat-square)](https://travis-ci.org/krainboltgreene/blankgem.gem)
-  - [![Dependencies](http://img.shields.io/gemnasium/krainboltgreene/blankgem.gem.svg?style=flat-square)](https://gemnasium.com/krainboltgreene/blankgem.gem)
-  - [![Downloads](http://img.shields.io/gem/dtv/blankgem.svg?style=flat-square)](https://rubygems.org/gems/blankgem)
-  - [![Tags](http://img.shields.io/github/tag/krainboltgreene/blankgem.gem.svg?style=flat-square)](http://github.com/krainboltgreene/blankgem.gem/tags)
-  - [![Releases](http://img.shields.io/github/release/krainboltgreene/blankgem.gem.svg?style=flat-square)](http://github.com/krainboltgreene/blankgem.gem/releases)
-  - [![Issues](http://img.shields.io/github/issues/krainboltgreene/blankgem.gem.svg?style=flat-square)](http://github.com/krainboltgreene/blankgem.gem/issues)
+  - [![Quality](http://img.shields.io/codeclimate/github/krainboltgreene/whiskey.gem.svg?style=flat-square)](https://codeclimate.com/github/krainboltgreene/whiskey.gem)
+  - [![Coverage](http://img.shields.io/codeclimate/coverage/github/krainboltgreene/whiskey.gem.svg?style=flat-square)](https://codeclimate.com/github/krainboltgreene/whiskey.gem)
+  - [![Build](http://img.shields.io/travis-ci/krainboltgreene/whiskey.gem.svg?style=flat-square)](https://travis-ci.org/krainboltgreene/whiskey.gem)
+  - [![Dependencies](http://img.shields.io/gemnasium/krainboltgreene/whiskey.gem.svg?style=flat-square)](https://gemnasium.com/krainboltgreene/whiskey.gem)
+  - [![Downloads](http://img.shields.io/gem/dtv/whiskey.svg?style=flat-square)](https://rubygems.org/gems/whiskey)
+  - [![Tags](http://img.shields.io/github/tag/krainboltgreene/whiskey.gem.svg?style=flat-square)](http://github.com/krainboltgreene/whiskey.gem/tags)
+  - [![Releases](http://img.shields.io/github/release/krainboltgreene/whiskey.gem.svg?style=flat-square)](http://github.com/krainboltgreene/whiskey.gem/releases)
+  - [![Issues](http://img.shields.io/github/issues/krainboltgreene/whiskey.gem.svg?style=flat-square)](http://github.com/krainboltgreene/whiskey.gem/issues)
   - [![License](http://img.shields.io/badge/license-MIT-brightgreen.svg?style=flat-square)](http://opensource.org/licenses/MIT)
-  - [![Version](http://img.shields.io/gem/v/blankgem.svg?style=flat-square)](https://rubygems.org/gems/blankgem)
+  - [![Version](http://img.shields.io/gem/v/whiskey.svg?style=flat-square)](https://rubygems.org/gems/whiskey)
 
 
-TODO: Write a gem description
+Whiskey is a [MUTE](MUTE) Engine.
 
 
 Using
 =====
 
-TODO: Write usage instructions here
+Once you've installed Whiskey you can start your new server with:
+
+``` bash
+$ whiskey server start
+```
+
+If you want to start whiskey on a specific port you'll need to specify like this:
+
+``` bash
+$ whiskey server start [--port 4001]
+```
+
+The server defaults to running in development mode, but you can can also specify:
+
+``` bash
+$ whiskey server start [--environment production]
+```
+
+If you want Whiskey to run in the background specify with:
+
+``` bash
+$ whiskey server start [--background]
+```
+
+Any changes you make to the code will require reloading the server so to kill
+the running server:
+
+``` bash
+$ whiskey server kill
+```
 
 
 Installing
@@ -27,7 +56,7 @@ Installing
 
 Add this line to your application's Gemfile:
 
-    gem "blankgem", "~> 1.0"
+    gem "whiskey", "~> 1.0"
 
 And then execute:
 
@@ -35,7 +64,7 @@ And then execute:
 
 Or install it yourself with:
 
-    $ gem install blankgem
+    $ gem install whiskey
 
 
 Contributing

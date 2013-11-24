@@ -1,0 +1,4 @@
+#!/usr/bin/env ruby
+$:.unshift File.expand_path("../server", __FILE__)
+
+require "bundler"

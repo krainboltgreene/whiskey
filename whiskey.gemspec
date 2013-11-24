@@ -2,16 +2,17 @@
 
 lib = File.expand_path(File.join("..", "lib"), __FILE__)
 $LOAD_PATH.unshift(lib) unless $LOAD_PATH.include?(lib)
-require "blankgem/version"
+require "whiskey/version"
 
 Gem::Specification.new do |spec|
-  spec.name = "blankgem"
-  spec.version = Blankgem::VERSION
+
+  spec.name = "whiskey"
+  spec.version = Whiskey::VERSION
   spec.authors = ["Kurtis Rainbolt-Greene"]
   spec.email = ["me@kurtisrainboltgreene.name"]
-  spec.summary = %q{TODO: Write a gem summary}
+  spec.summary = %q{A simple MUTE Engine}
   spec.description = spec.summary
-  spec.homepage = "http://krainboltgreene.github.io/blankgem"
+  spec.homepage = "http://krainboltgreene.github.io/whiskey"
   spec.license = "MIT"
 
   spec.files = Dir[File.join("lib", "**", "*")]
@@ -19,6 +20,16 @@ Gem::Specification.new do |spec|
   spec.test_files = Dir[File.join("test", "**", "*"), File.join("spec", "**", "*")]
   spec.require_paths = ["lib"]
 
+  # spec.add_runtime_dependency "activerecord", "~> 3.2"
+  # spec.add_runtime_dependency "moneta", "~> 0.7"
+  spec.add_runtime_dependency "activesupport", "~> 3.2"
+  spec.add_runtime_dependency "celluloid-io", "~> 0.12"
+  spec.add_runtime_dependency "multi_json", "~> 1.7"
+  # spec.add_runtime_dependency "colored", "~> 1.2"
+  spec.add_runtime_dependency "astruct", "~> 2.11"
+  spec.add_runtime_dependency "thor", "~> 0.18"
+  spec.add_runtime_dependency "parslet", "~> 1.5"
+  spec.add_runtime_dependency "parslet-export", "~> 2.0"
   spec.add_development_dependency "bundler", "~> 1.3"
   spec.add_development_dependency "rspec", "~> 3.0"
   spec.add_development_dependency "rake", "~> 10.1"

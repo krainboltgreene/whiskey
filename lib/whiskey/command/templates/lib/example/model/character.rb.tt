@@ -1,0 +1,7 @@
+class Charactor < ActiveRecord::Base
+  include <%= values.name.camelize %>::Model
+  belongs_to :account
+
+  validate :name, present: true
+  validate :description, present: true
+end
