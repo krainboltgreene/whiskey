@@ -1,0 +1,2 @@
+--no-private
+--exclude /lib/whiskey/command/templates
