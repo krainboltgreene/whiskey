@@ -1,6 +1,8 @@
 require "spec_helper"
 
 describe Whiskey::Server::Connection do
+  include_context "stubbed logging"
+
   let(:ip) { "127.0.0.1" }
   let(:port) { "4000" }
   let(:socket) { double("Socket") }

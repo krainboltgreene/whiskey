@@ -1,15 +1,24 @@
 require "spec_helper"
 
 describe Whiskey::Server::Cycle do
-  let(:cycle) { described_class.new(%|{"key": "value"}|) }
+  include_context "stubbed logging"
+
+  let(:data) { %|{"key": "value"}| }
+  let(:cycle) { described_class.new(data) }
 
   describe "#interpret!" do
+    let(:body) do
+      {
+        "resource" => "accounts",
+        "verb" => "PULL",
+        "parameters" => { "id" => 1}
+      }
+    end
+
     let(:interpret!) { cycle.interpret! }
 
     before(:each) do
-      allow(cycle).to receive(:input) do
-        {}
-      end
+      allow(cycle).to receive(:input).and_return(body)
     end
 
     it "should return the response" do

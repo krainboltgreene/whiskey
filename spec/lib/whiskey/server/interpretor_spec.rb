@@ -1,6 +1,8 @@
 require "spec_helper"
 
 describe Whiskey::Server::Interpretor do
+  include_context "stubbed logging"
+
   let(:body) do
     {
       "resource" => "accounts",

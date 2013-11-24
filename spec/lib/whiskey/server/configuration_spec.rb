@@ -1,6 +1,8 @@
 require "spec_helper"
 
 describe Whiskey::Server::Configuration do
+  include_context "stubbed logging"
+
   let(:host) { "foo" }
   let(:port) { "bar" }
   let(:delimiter) { ":" }
