@@ -8,7 +8,7 @@ module Whiskey
       end
 
       def body
-        OpenStruct.new(@parameters)
+        AltStruct.new(@body)
       end
 
       def to_hash
@@ -22,10 +22,10 @@ module Whiskey
 
       def action
         case
-          when @action == "PULL" then "List"
-          when @action == "PUSH" then "Create"
-          when @action == "PULL" && parameters.id then "Show"
-          when @action == "PUSH" && parameters.id then "Update"
+          when show? then "Show"
+          when update? then "Update"
+          when pull? then "List"
+          when push? then "Create"
         end
       end
 
@@ -45,6 +45,26 @@ module Whiskey
 
       def defined_action?
         self.class.const_defined?(action)
+      end
+
+      def pull?
+        @action == "PULL"
+      end
+
+      def has_id?
+        body.respond_to?(:id)
+      end
+
+      def push?
+        @action == "PUSH"
+      end
+
+      def show?
+        pull? && has_id?
+      end
+
+      def update?
+        push? && has_id?
       end
     end
   end
