@@ -17,7 +17,7 @@ module Whiskey
       end
 
       def control
-        "#{Server.configuration.namespace}::Control::#{@control.camelize}"
+        "#{Server.configuration.control}::#{@control.camelize}"
       end
 
       def action

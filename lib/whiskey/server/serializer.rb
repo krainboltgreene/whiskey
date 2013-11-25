@@ -4,18 +4,15 @@ module Whiskey
       attr_reader :data
 
       def initialize(raw)
-        @errors = []
-        begin
+        if raw.is_a?(Hash) || raw.is_a?(Array)
           @data = MultiJson.dump(raw)
-          @valid = true
-        rescue Exception => error
-          puts error
-          @valid = false
+        else
+          Whiskey.logger.error "Raw data wasn't a Hash"
         end
       end
 
       def valid?
-        @valid
+        !@data.nil?
       end
     end
   end

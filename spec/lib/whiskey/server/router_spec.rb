@@ -17,10 +17,6 @@ describe Whiskey::Server::Router do
     end
   end
 
-  # def to_hash
-  #   control_action.constantize.new(body).to_hash
-  # end
-
   describe "#to_hash" do
     let(:control_action) { double("ControlAction") }
 

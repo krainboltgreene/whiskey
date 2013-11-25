@@ -6,25 +6,23 @@ module Whiskey
           @action = klass
         end
 
-        def to_s
-          case @action
-            when List then "PULL"
-            when Create then "PUSH"
-            when Show then "PULL"
-            when Update then "PUSH"
+        def name
+          case @action.name
+            when "Create" then "PUSH"
+            when "Update" then "PUSH"
+            when "List" then "PULL"
+            when "Show" then "PULL"
           end
         end
 
         def to_hash
           {
-            to_s => command
+            name => command
           }
         end
 
         def command
-          if input?
-            "#{name.deconstantize.demodulize} "
-          end
+          "#{self.class.name.deconstantize.demodulize} " if input?
         end
 
         private

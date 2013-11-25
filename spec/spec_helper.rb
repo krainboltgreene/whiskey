@@ -25,6 +25,7 @@ shared_context "stubbed configuration" do
 
   before(:each) do
     allow(configuration).to receive(:namespace).and_return(namespace)
+    allow(configuration).to receive(:control).and_return("Foo::Control")
     allow(Whiskey::Server).to receive(:configuration).and_return(configuration)
   end
 end

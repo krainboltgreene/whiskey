@@ -5,16 +5,14 @@ module Whiskey
 
       def initialize(raw)
         begin
-          @data = MultiJson.load(raw.chomp!)
-          @valid = true
-        rescue Exception => error
+          @data = MultiJson.load(raw)
+        rescue MultiJson::LoadError => error
           Whiskey.logger.error error
-          @valid = false
         end
       end
 
       def valid?
-        @valid
+        !@data.nil?
       end
     end
   end
