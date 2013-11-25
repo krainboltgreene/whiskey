@@ -13,7 +13,7 @@ module Whiskey
 
       def to_hash
         Whiskey.logger.info("#{@action} /#{@control} #{@body.inspect}")
-        control_action.constantize.new(body).to_hash
+        control_action.to_hash
       end
 
       def control
@@ -35,8 +35,12 @@ module Whiskey
 
       private
 
-      def control_action
+      def control_action_class
         "#{control}::#{action}"
+      end
+
+      def control_action
+        control_action_class.constantize.new(body)
       end
 
       def defined_control?

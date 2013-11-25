@@ -1,21 +1,43 @@
 require "spec_helper"
 
 describe Whiskey::Server::Router do
+  include_context "stubbed logging"
+  include_context "stubbed configuration"
+
   let(:resource) { "accounts" }
   let(:verb) { "PULL" }
-  let(:parameters) { {} }
+  let(:parameters) { { key: "value" } }
   let(:router) { described_class.new(resource, verb, parameters) }
 
   describe "#body" do
+    let(:body) { router.body }
 
+    it "responds to a key given" do
+      expect(body.key).to eq("value")
+    end
   end
 
-  describe "#to_hash" do
+  # def to_hash
+  #   control_action.constantize.new(body).to_hash
+  # end
 
+  describe "#to_hash" do
+    let(:control_action) { double("ControlAction") }
+
+    it "contains the X" do
+      allow(router).to receive(:control_action).and_return(control_action)
+      expect(control_action).to receive(:to_hash)
+      router.to_hash
+    end
   end
 
   describe "#control" do
+    let(:control) { router.control }
+    let(:controller_class) { "#{namespace}::Control::Accounts" }
 
+    it "returns the controller class for the resource" do
+      expect(control).to eq(controller_class)
+    end
   end
 
   describe "#action" do
@@ -55,18 +77,15 @@ describe Whiskey::Server::Router do
   end
 
   describe "#valid_route?" do
+    let(:valid_route?) { router.valid_route? }
 
-  end
+    it "returns true if control and action are defined" do
+      allow(described_class).to receive(:const_defined?).and_return(true)
+      expect(valid_route?).to be(true)
+    end
 
-  describe "#control_action" do
-
-  end
-
-  describe "#defined_control?" do
-
-  end
-
-  describe "#defined_action?" do
-
+    it "returns raises if the control or action hasn't been defined" do
+      expect { valid_route? }.to raise_error(NameError)
+    end
   end
 end
