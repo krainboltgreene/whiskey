@@ -25,16 +25,16 @@ module Whiskey
       start
     end
 
+    def self.configuration
+      @@configuration
+    end
+
     # This method starts the server according to the configuration object
     # and then follows the instructions set by Celluloid-Io examples.
     def self.start
-      supervise(@@configuration.host, @@configuration.port)
+      supervise(@@configuration.host, @@configuration.port.to_i)
       trap("INT") { supervisor.terminate; exit }
       sleep
-    end
-
-    def self.configuration
-      @@configuration
     end
 
     attr_reader :server
@@ -57,20 +57,28 @@ module Whiskey
     end
 
     def handle(connection)
-      Whiskey.logger.info "New connection created from #{connection.id}"
+      Whiskey.logger.info("New connection created from #{connection.id}")
       begin
-        Handler.new(connection).handle
-      rescue => connection_error
-        Whiskey.logger.error connection_error
+        Handler.new(connection).process
+      rescue => error
+        Whiskey.logger.error(error)
       ensure
         # If the connection has been broken, this might not work: Errno::EPIPE
         begin
-          connection.write Serializer.new(Error.new(:internal_server_error).to_hash).data
-        rescue => connection_error
-          Whiskey.logger.error connection_error
+          connection.write(serialized_internal_error)
+        rescue => error
+          Whiskey.logger.error(error)
         end
         connection.close
       end
+    end
+
+    def serialized_internal_server_error
+      Serializer.new(internal_server_error).data
+    end
+
+    def internal_server_error
+      Error.new(:internal_server_error).to_hash
     end
   end
 end

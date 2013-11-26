@@ -7,7 +7,7 @@ module Whiskey
         @connection = connection
       end
 
-      def handle
+      def process
         loop do
           connection.process
         end
