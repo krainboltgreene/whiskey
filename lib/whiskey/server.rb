@@ -53,23 +53,23 @@ module Whiskey
     private
 
     def run
-      loop { async.handle Connection.new(server.accept) }
+      loop { async.process handle connection_with(server) }
     end
 
-    def handle(connection)
+    def process(handler)
       Whiskey.logger.info("New connection created from #{connection.id}")
       begin
-        Handler.new(connection).process
+        handler.process
       rescue => error
         Whiskey.logger.error(error)
       ensure
         # If the connection has been broken, this might not work: Errno::EPIPE
         begin
-          connection.write(serialized_internal_error)
+          handler.write(serialized_internal_error)
         rescue => error
           Whiskey.logger.error(error)
         end
-        connection.close
+        handler.close
       end
     end
 
@@ -79,6 +79,14 @@ module Whiskey
 
     def internal_server_error
       Error.new(:internal_server_error).to_hash
+    end
+
+    def handle(connection)
+      Handler.new(connection)
+    end
+
+    def connection_with(server)
+      Connection.new(server.accept)
     end
   end
 end

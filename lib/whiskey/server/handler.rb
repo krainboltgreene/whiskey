@@ -1,7 +1,11 @@
 module Whiskey
   class Server
     class Handler
+      extend Forwardable
+
       attr_reader :connection
+
+      def_delegator :@connection, :close, :write
 
       def initialize(connection)
         @connection = connection

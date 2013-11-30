@@ -3,6 +3,8 @@ require "spec_helper"
 describe Whiskey::Server do
   let(:host) { "localhost" }
   let(:port) { "4000" }
+  let(:server) { described_class.new(host, port) }
+  let(:connection) { double("Whiskey::Server::Connection") }
 
   describe ".configure" do
     before(:each) do
@@ -57,5 +59,9 @@ describe Whiskey::Server do
     end
   end
 
-  describe "#handle"
+  describe "#handle" do
+    let(:handle) { server.handle(connection) }
+
+    it ""
+  end
 end
