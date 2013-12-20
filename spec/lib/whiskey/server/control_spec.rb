@@ -5,6 +5,8 @@ module ExampleControl
 end
 
 describe Whiskey::Server::Control do
+  include_context "stubbed logging"
+
   let(:control) { ExampleControl }
 
   describe ".controls" do

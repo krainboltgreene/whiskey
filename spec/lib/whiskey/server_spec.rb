@@ -1,6 +1,8 @@
 require "spec_helper"
 
 describe Whiskey::Server do
+  include_context "stubbed logging"
+
   let(:host) { "localhost" }
   let(:port) { "4000" }
   let(:server) { described_class.new(host, port) }

@@ -1,6 +1,8 @@
 require "spec_helper"
 
 describe Whiskey::Server::Deserializer do
+  include_context "stubbed logging"
+
   let(:deserializer) { described_class.new(data) }
 
   describe "#valid?" do
