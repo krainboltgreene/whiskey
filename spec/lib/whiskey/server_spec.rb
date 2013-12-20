@@ -4,7 +4,7 @@ describe Whiskey::Server do
   include_context "stubbed logging"
 
   let(:host) { "localhost" }
-  let(:port) { "4000" }
+  let(:port) { 4000 }
   let(:server) { described_class.new(host, port) }
   let(:connection) { double("Whiskey::Server::Connection") }
 
