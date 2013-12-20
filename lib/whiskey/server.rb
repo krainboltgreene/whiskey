@@ -65,7 +65,7 @@ module Whiskey
       ensure
         # If the connection has been broken, this might not work: Errno::EPIPE
         begin
-          handler.write(serialized_internal_error)
+          handler.write(serialized_internal_server_error)
         rescue => error
           Whiskey.logger.error(error)
         end
