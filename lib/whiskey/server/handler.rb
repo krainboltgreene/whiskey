@@ -5,7 +5,9 @@ module Whiskey
 
       attr_reader :connection
 
-      def_delegator :@connection, :close, :write
+      def_delegator :@connection, :close
+      def_delegator :@connection, :write
+      def_delegator :@connection, :id
 
       def initialize(connection)
         @connection = connection
