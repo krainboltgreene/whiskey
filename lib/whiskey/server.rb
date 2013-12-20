@@ -57,7 +57,7 @@ module Whiskey
     end
 
     def process(handler)
-      Whiskey.logger.info("New connection created from #{connection.id}")
+      Whiskey.logger.info("New connection created from #{handler.id}")
       begin
         handler.process
       rescue => error
