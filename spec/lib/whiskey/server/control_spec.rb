@@ -10,9 +10,7 @@ describe Whiskey::Server::Control do
   let(:control) { ExampleControl }
 
   describe ".controls" do
-    it "returns all the controls" do
-
-    end
+    it "returns all the controls"
   end
 
   describe ".to_resources" do
