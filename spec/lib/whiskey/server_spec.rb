@@ -8,6 +8,12 @@ describe Whiskey::Server do
   let(:server) { described_class.new(host, port) }
   let(:connection) { double("Whiskey::Server::Connection") }
 
+  before(:each) do
+    allow(described_class).to receive(:supervise).with(host, port)
+    allow(described_class).to receive(:trap).with("INT")
+    allow(described_class).to receive(:sleep)
+  end
+
   describe ".configure" do
     before(:each) do
       allow(described_class).to receive(:start)
@@ -42,12 +48,6 @@ describe Whiskey::Server do
   end
 
   describe ".start" do
-    before(:each) do
-      allow(described_class).to receive(:supervise).with("localhost", 4000)
-      allow(described_class).to receive(:trap).with("INT")
-      allow(described_class).to receive(:sleep)
-    end
-
     it "supervises with the host and port" do
       expect(described_class).to receive(:supervise).with("localhost", 4000)
     end
