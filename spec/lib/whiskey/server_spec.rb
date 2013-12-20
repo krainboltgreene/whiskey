@@ -7,6 +7,7 @@ describe Whiskey::Server do
   let(:port) { 4000 }
   let(:server) { described_class.new(host, port) }
   let(:connection) { double("Whiskey::Server::Connection") }
+  let(:handler) { double("Whiskey::Server::Handler") }
 
   before(:each) do
     allow(described_class).to receive(:supervise).with(host, port)
@@ -61,9 +62,26 @@ describe Whiskey::Server do
     end
   end
 
-  describe "#handle" do
-    let(:handle) { server.handle(connection) }
+  describe "#process" do
+    let(:process) { server.send(:process, handler) }
 
-    it ""
+    before(:each) do
+      allow(handler).to receive(:id)
+      allow(handler).to receive(:write)
+      allow(handler).to receive(:close)
+      allow(handler).to receive(:process)
+    end
+
+    it "calls #process on the handler" do
+      expect(handler).to receive(:process)
+    end
+
+    it "logs the connection id" do
+      expect(handler).to receive(:id)
+    end
+
+    after(:each) do
+      process
+    end
   end
 end
