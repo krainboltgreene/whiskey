@@ -10,10 +10,10 @@ module Whiskey
 
         def name
           case @action.name
-            when "Create" then "PUSH"
-            when "Update" then "PUSH"
-            when "List" then "PULL"
-            when "Show" then "PULL"
+          when "Create" then "PUSH"
+          when "Update" then "PUSH"
+          when "List" then "PULL"
+          when "Show" then "PULL"
           end
         end
 

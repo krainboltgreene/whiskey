@@ -22,10 +22,10 @@ module Whiskey
 
       def action
         case
-          when show? then "Show"
-          when update? then "Update"
-          when pull? then "List"
-          when push? then "Create"
+        when show? then "Show"
+        when update? then "Update"
+        when pull? then "List"
+        when push? then "Create"
         end
       end
 
