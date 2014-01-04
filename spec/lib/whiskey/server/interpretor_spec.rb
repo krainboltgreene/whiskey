@@ -57,7 +57,3 @@ describe Whiskey::Server::Interpretor do
   describe "#has_verb?" do
   end
 end
-
-
-
-

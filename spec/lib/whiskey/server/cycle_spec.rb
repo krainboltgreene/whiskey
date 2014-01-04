@@ -11,7 +11,7 @@ describe Whiskey::Server::Cycle do
       {
         "resource" => "accounts",
         "verb" => "PULL",
-        "parameters" => { "id" => 1}
+        "parameters" => { "id" => 1 }
       }
     end
 

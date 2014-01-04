@@ -29,3 +29,4 @@ shared_context "stubbed configuration" do
     allow(Whiskey::Server).to receive(:configuration).and_return(configuration)
   end
 end
+
