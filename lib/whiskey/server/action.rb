@@ -14,11 +14,11 @@ module Whiskey
       end
 
       def initialize(*args)
-        raise "Not yet implemented"
+        raise NoMethodError, "Not yet implemented"
       end
 
       def to_hash
-        raise "Not yet implemented"
+        raise NoMethodError, "Not yet implemented"
       end
     end
   end
