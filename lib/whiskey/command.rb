@@ -20,7 +20,7 @@ module Whiskey
     desc "server [start|stop]", "Starts the whiskey server up"
     def server(switch)
       case switch
-        when "start" then StartServer.new.call
+      when "start" then StartServer.new.call
       end
     end
   end
