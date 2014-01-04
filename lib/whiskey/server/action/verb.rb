@@ -1,6 +1,8 @@
 module Whiskey
   class Server
     class Action
+      # The Verb class is an abstract class that passes verb-like behavior to
+      # the various controller verbs an application will respond to.
       class Verb
         def initialize(klass)
           @action = klass

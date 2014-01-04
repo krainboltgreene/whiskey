@@ -2,6 +2,8 @@ require_relative "action/verb"
 
 module Whiskey
   class Server
+    # The Action class is an abstract class that passes
+    # action-like behavior to the subclasses.
     class Action
       @@input = true
 

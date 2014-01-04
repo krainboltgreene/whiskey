@@ -1,5 +1,6 @@
 module Whiskey
   class Server
+    # The Deserializer's job is to take the input from outside and parse it.
     class Deserializer
       attr_reader :data
 

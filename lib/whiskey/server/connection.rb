@@ -1,5 +1,7 @@
 module Whiskey
   class Server
+    # The Connection class is used to talk to the request. It knows how to
+    # read from and write to it's socket.
     class Connection
       extend Forwardable
 

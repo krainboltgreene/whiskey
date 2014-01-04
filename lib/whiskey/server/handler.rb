@@ -1,5 +1,6 @@
 module Whiskey
   class Server
+    # The Handler class is the runtime loop around processing connection feeds.
     class Handler
       extend Forwardable
 

@@ -1,5 +1,7 @@
 module Whiskey
   class Command < Thor
+    # The Build class is how we scaffold out an entire Whiskey application from
+    # scratch.
     class Build
       extend Forwardable
 

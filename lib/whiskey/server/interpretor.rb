@@ -1,5 +1,7 @@
 module Whiskey
   class Server
+    # The Interpretor class takes the deserialized content and determines if
+    # the request is actionable or if it needs to be ignored.
     class Interpretor
       def initialize(input)
         @instruction = input

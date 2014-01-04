@@ -1,5 +1,7 @@
 module Whiskey
   class Server
+    # This is the generic Error class, an abstract class for all of the various
+    # exceptions that might get raised in an application.
     class Error
       def initialize(code)
         @payload = send(code)
