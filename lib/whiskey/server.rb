@@ -33,7 +33,10 @@ module Whiskey
     # and then follows the instructions set by Celluloid-Io examples.
     def self.start
       supervise(@@configuration.host, @@configuration.port.to_i)
-      trap("INT") { supervisor.terminate; exit }
+      trap("INT") do
+        supervisor.terminate
+        exit
+      end
       sleep
     end
 
