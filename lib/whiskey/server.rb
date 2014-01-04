@@ -61,19 +61,13 @@ module Whiskey
 
     def process(handler)
       Whiskey.logger.info("New connection created from #{handler.id}")
-      begin
-        handler.process
-      rescue => error
-        Whiskey.logger.error(error)
-      ensure
-        # If the connection has been broken, this might not work: Errno::EPIPE
-        begin
-          handler.write(serialized_internal_server_error)
-        rescue => error
-          Whiskey.logger.error(error)
-        end
-        handler.close
-      end
+      handler.process
+    rescue => error
+      Whiskey.logger.error(error)
+    ensure
+      # If the connection has been broken, this might not work: Errno::EPIPE
+      write_server_error
+      handler.close
     end
 
     def serialized_internal_server_error
@@ -90,6 +84,12 @@ module Whiskey
 
     def connection_with(server)
       Connection.new(server.accept)
+    end
+
+    def write_server_error
+      handler.write(serialized_internal_server_error)
+    rescue => error
+      Whiskey.logger.error(error)
     end
   end
 end
