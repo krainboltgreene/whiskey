@@ -7,7 +7,11 @@ module Whiskey
 
   def self.logger
     @logger ||= Logger.new(STDOUT).tap do |log|
-      log.level = ENV["WHISKEY_ENVIRONMENT"] == "development" ? Logger::DEBUG : Logger::INFO
+      if ENV["WHISKEY_ENVIRONMENT"] == "development"
+        log.level = Logger::DEBUG
+      else
+        log.level = Logger::INFO
+      end
       log.formatter = nil
     end
   end
