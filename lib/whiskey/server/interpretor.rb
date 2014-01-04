@@ -3,17 +3,26 @@ module Whiskey
     # The Interpretor class takes the deserialized content and determines if
     # the request is actionable or if it needs to be ignored.
     class Interpretor
+      extend Forwardable
+
+      def_delegator :instruction, :resource
+      def_delegator :instruction, :verb
+      def_delegator :instruction, :parameters
+
       def initialize(input)
         @instruction = input
-        @router = Router.new(instruction.resource, instruction.verb, instruction.parameters)
       end
 
       def response
         if valid_input?
-          @router
+          router
         else
           Error.new(:not_found)
         end
+      end
+
+      def router
+        Router.new(resource, verb, parameters)
       end
 
       def instruction
@@ -23,7 +32,7 @@ module Whiskey
       private
 
       def valid_input?
-        has_resource? && has_verb? && @router.valid_route?
+        has_resource? && has_verb? && router.valid_route?
       end
 
       def has_resource?
