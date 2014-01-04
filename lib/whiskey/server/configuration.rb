@@ -1,15 +1,12 @@
 module Whiskey
   class Server
     class Configuration < AltStruct
-
       def control_class
         "#{namespace}::Control"
       end
 
       def control
-        if defined?(control_class)
-          control_class.constantize
-        end
+        control_class.constantize if defined?(control_class)
       end
 
       def to_s
