@@ -52,9 +52,6 @@ describe Whiskey::Server::Interpretor do
     end
   end
 
-  describe "#has_resource?" do
-  end
-
-  describe "#has_verb?" do
-  end
+  describe "#has_resource?"
+  describe "#has_verb?"
 end
