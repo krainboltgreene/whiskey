@@ -5,14 +5,12 @@ module Whiskey
     # The Action class is an abstract class that passes
     # action-like behavior to the subclasses.
     class Action
-      @@input = true
-
       def self.to_verb
-        Verb.new(self, @@input).to_hash
+        Verb.new(self, @input).to_hash
       end
 
       def input?
-        @@input
+        @input
       end
 
       def initialize(*args)
