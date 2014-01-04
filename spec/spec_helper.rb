@@ -30,3 +30,12 @@ shared_context "stubbed configuration" do
   end
 end
 
+shared_context "stubbed body" do
+  let(:body) do
+    {
+      "resource" => "accounts",
+      "verb" => "PULL",
+      "parameters" => { "id" => 1 }
+    }
+  end
+end

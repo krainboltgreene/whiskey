@@ -2,14 +2,8 @@ require "spec_helper"
 
 describe Whiskey::Server::Interpretor do
   include_context "stubbed logging"
+  include_context "stubbed body"
 
-  let(:body) do
-    {
-      "resource" => "accounts",
-      "verb" => "PULL",
-      "parameters" => { "id" => 1}
-    }
-  end
   let(:interpretor) { described_class.new(body) }
 
   describe "#response" do
