@@ -4,15 +4,22 @@ describe Whiskey::Server::Interpretor do
   include_context "stubbed logging"
   include_context "stubbed body"
 
+  let(:router) { instance_double("Whiskey::Server::Router") }
   let(:interpretor) { described_class.new(body) }
+
+  before(:each) do
+    allow(interpretor).to receive(:router).and_return(router)
+  end
 
   describe "#response" do
     let(:response) { interpretor.response }
 
+    before(:each) do
+      allow(router).to receive(:valid_route?).and_return(true)
+    end
+
     it "returns a router response" do
-      allow_any_instance_of(Whiskey::Server::Router).to receive(:defined_control?).and_return(true)
-      allow_any_instance_of(Whiskey::Server::Router).to receive(:defined_action?).and_return(true)
-      expect(response).to be_a(Whiskey::Server::Router)
+      expect(response).to be(router)
     end
 
     context "with a bad instruction" do
