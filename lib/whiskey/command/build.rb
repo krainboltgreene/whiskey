@@ -13,6 +13,13 @@ module Whiskey
       \t- rubinius
       \t- jruby
       ASK
+      ROOT_FILES = [
+        "Gemfile",
+        "LICENSE.txt",
+        "Thorfile",
+        "Procfile",
+        "server.rb"
+      ]
 
       attr_reader :command, :name
 
@@ -32,12 +39,8 @@ module Whiskey
       def call
         empty_directory(name)
         command.destination_root = name
-        template("Gemfile")
+        ROOT_FILES.each(&method(:template))
         template("gitignore", ".gitignore")
-        template("LICENSE.txt")
-        template("Thorfile")
-        template("Procfile")
-        template("server.rb")
         inside("lib") do
           template("example.rb", "#{name}.rb")
           directory("example", "#{name}")
