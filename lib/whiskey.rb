@@ -4,15 +4,12 @@ require "active_support/core_ext"
 
 module Whiskey
   require_relative "whiskey/version"
+  require_relative "whiskey/logger"  
 
-  def self.logger
-    @logger ||= Logger.new(STDOUT).tap do |log|
-      if ENV["WHISKEY_ENVIRONMENT"] == "development"
-        log.level = Logger::DEBUG
-      else
-        log.level = Logger::INFO
-      end
-      log.formatter = nil
+  def self.logger(manager = Logger.default)
+    @logger ||= manager.klass.new(manager.io).tap do |log|
+      log.level = manager.klass.const_get(manager.level)
+      log.formatter = manager.formatter
     end
   end
 end

@@ -8,14 +8,11 @@ require "whiskey/server"
 require "whiskey/command"
 
 shared_context "stubbed logging" do
+  let(:log_manager) { instance_double("LogManager") }
   let(:logger) { double("Logger") }
-
   before(:each) do
-    allow(logger).to receive(:info)
-    allow(logger).to receive(:debug)
-    allow(logger).to receive(:error)
-
-    allow(Whiskey).to receive(:logger).and_return(logger)
+    allow(log_manager).to receive(:klass).and_return(logger)
+    Whiskey.logger(log_manager)
   end
 end
 

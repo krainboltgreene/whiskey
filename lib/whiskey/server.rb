@@ -22,6 +22,7 @@ module Whiskey
     def self.configure(options = {}, &block)
       @@configuration = Configuration.new(options)
       instance_exec(@@configuration, &block) if block_given?
+      Celluloid.logger(@@configuration.logger || Whiskey.logger)
       start
     end
 
